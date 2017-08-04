@@ -391,12 +391,13 @@ angular.module('google.places', [])
                         docEl = $document[0].documentElement,
                         body = $document[0].body,
                         scrollTop = $window.pageYOffset || docEl.scrollTop || body.scrollTop,
-                        scrollLeft = $window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+                        scrollLeft = $window.pageXOffset || docEl.scrollLeft || body.scrollLeft,
+                        bodyBounds = body.getBoundingClientRect();
 
                     return {
                         width: rect.width,
                         height: rect.height,
-                        top: rect.top + rect.height + scrollTop,
+                        top: rect.top + rect.height + scrollTop - bodyBounds.top,
                         left: rect.left + scrollLeft
                     };
                 }
